@@ -1,0 +1,97 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documeto</title>
+    <style>
+        .tabla{
+            width: 100%;
+            height: auto;
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        .tabla{
+            border-bottom: cadetblue solid 1px;
+        }
+        .tabla th{
+             color: rgb(9, 11, 170);
+        }
+    </style>
+</head>
+<body>
+    <!-- /Tabla de Productos -->
+    <table class="Tabla" style="margin-top: 5%;"> 
+        <hr>
+        <table class="tabla" style="margin-top: 10px;">
+        <tr>
+            <th>#id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Acción</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Coca Cola</td>
+            <td>10</td>
+            <td>10</td>
+            <td><Button  producto-id="1" nombre="Coca Cola" precio="10" cantidad="10" onclick="AgregarProducto(this)">Agregar</Button></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Pepsi</td>
+            <td>5</td>
+            <td>5</td>
+            <td><Button producto-id="2" nombre="Pepsi" precio="5" cantidad="5" onclick="AgregarProducto(this)">Agregar</Button></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Jarito</td>
+            <td>2</td>
+            <td>2</td>
+            <td><Button producto-id="3" nombre="Jarito" precio="2" cantidad="2" onclick="AgregarProducto(this)">Agregar</Button></td>
+        </tr>
+    </table>
+    <!--- /Tabla de Productos --->
+    <table class="Tabla" style="margin-top: 5%;"> 
+        <hr>
+        <table class="tabla" style="margin-top: 10px;">
+        <tr>
+            <th>#id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Acción</th>
+        </tr>
+        <!--- /Tabla de Carrito--->
+    <table class="Tabla" style="margin-top: 10%;"> 
+        <thead>
+        <table class="tabla" style="margin-top: 10px;">
+            <tr>
+                <th>#id</th>
+                <th>Nombre</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+             <th>Acción</th>
+           </tr>
+       </thead>
+       <tbody id="carrito">
+
+    </tbody>
+    <!--tabla de carrito-->
+<body>
+
+
+funtion AgregarProducto(Producto){
+   var nombre = producto.getAttribute('nombre');
+   var precio = producto.getAttribute('precio');
+   var cantidad = producto.getAttribute('cantidad');
+   var id = producto.getAttribute('producto-id');
+
+   document.getElementById('carrito').innerHTML += '<tr><td>'+id+'<tr></td><td>'+nombre+'</td><td>'+precio+'</td><td>1</td><tr>;
+}
+
+</scipt>
+
