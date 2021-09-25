@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>Tareas</th>
+            <th>Proceso</th>
+            <th>Concluidas</th>
+        </thead>
+        <tbody id="newElemnto">
+            <tr>
+                <td>Ir a correr</td>
+                <td><button nombre="Ir a correr"  onclick="agregar(this)">Agregar a proceso</button> <button nombre="Hacer de comer"  onclick="agregar2(this)">Agregar a concluidas </button></td>
+                          
+            </tr>
+            <tr>
+                <td>Hacer la tarea</td>
+                <td><button nombre="Hacer la tarea"  onclick="agregar(this)">Agregar a proceso</button> <button nombre="Hacer la tarea"  onclick="agregar2(this)">Agregar a concluidas </button></td>           
+            </tr>
+            <tr>
+                <td>Entrar a clases</td>
+                <td><button nombre="Entar a clases"  onclick="agregar(this)">Agregar a proceso</button> <button nombre="Tomar clases "  onclick="agregar2(this)">Agregar a concluidas </button></td>          
+            </tr>
+            <tr>
+                <td>Ir a tirar la basura</td>
+                <td><button nombre="Ir a tirar la basura"  onclick="agregar(this)">Agregar a proceso</button> <button nombre="Ir a tirar la basura"  onclick="agregar2(this)">Agregar a concluidas </button></td>          
+            </tr>
+            
+        </tbod>
+
+    </table>
+
+</body>
+<script>
+    function agregar(tarea){
+    var nombre = tarea.getAttribute('nombre');
+
+
+    document.getElementById('newElemnto').innerHTML += '<tr><td></td><td>'+nombre+'</td></tr>'
+}
+function agregar2(tarea){
+    var nombre = tarea.getAttribute('nombre');
+
+
+    document.getElementById('newElemnto').innerHTML += '<tr><td></td><td></td><td>'+nombre+'</td><td></td></tr>'
+}
+
+</script>
+</html>
