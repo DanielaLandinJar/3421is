@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
+    <title>Examen_by_obb_rhh_ljvd</title>
+    <style>
+        .tabla{
+            width: 100%;
+            height: auto;
+            border: 1px solid black;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        .tabla td{            
+            border-bottom: cadetblue solid 1px;
+        }
+        .tabla th{
+            color: rgb(47, 3, 243);
+        }
+        .tabla2{
+        	text-align: center;
+        	color: red;
+        }
+        .tabla3{
+        	text-align: center;
+        	color: black;
+        }
+    </style>
+</head>
+<body>
+	<h1 class="tabla3"><b>EXAMEN UNIDAD 1: <br><br>BY OSCARY BASURTO^2, RAUL HERNANDEZ^2, LANDIN JARQUIN VICTORIA DANIELA </b></h1>
+
+	<h2 class="tabla2"><b>ARTICULOS</b></h2>
+	<table class="tabla" style="margin-top: 5%;">
+    <thead>
+    <tr>
+        <th><b>ARTICULOS</b></th>
+        <th><b>PRECIO</b></th>
+        <th><b>ACCIÓN</b></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>PlayStation 5</td>
+        <td>$13999</td>
+        <td><button nombre="PlayStation 5" precio="$13999" onclick="añadirArticulo1(this)"><b>AÑADIR</b></button></td>
+    </tr>
+    <tr>
+        <td>Xbox Series S</td>
+        <td>$7714</td>
+        <td><button nombre="Xbox Series S" precio="$7714" onclick="añadirArticulo2(this)"><b>AÑADIR</b></button></td>
+    </tr>
+    <tr>
+        <td>Nintendo switch</td>
+        <td>$7106</td>
+        <td><button nombre="Nintendo Switch" precio="$7106" onclick="añadirArticulo3(this)"><b>AÑADIR</b></button></td>
+    </tr>
+    <tr>
+        <td>Xbox Series X</td>
+        <td>$17749</td>
+        <td><button nombre="Xbox Series X" precio="$17749" onclick="añadirArticulo4(this)"><b>AÑADIR</b></button></td>
+    </tr>
+    <tr>
+        <td>Audífonos Gamer</td>
+        <td>$299</td>
+        <td><button nombre="Audífonos Gamer" precio="$299" onclick="añadirArticulo5(this)"><b>AÑADIR</b></button></td>
+    </tr>
+     <tr>
+        <td>Silla de escritorio Tedge</td>
+        <td>$2811</td>
+        <td><button nombre="Silla de escritorio Tedge" precio="$2811" onclick="añadirArticulo6(this)"><b>AÑADIR</b></button></td>
+    </tr>
+    </tbody>
+</table>
+<br><br><br>
+<h2 class="tabla2"><b>ARTICULOS AÑADIDOS</b></h2>
+<table class="tabla" style="margin-top: 5%;">
+    <thead >
+    <tr>
+        <th>ARTICULOS COMPRADOS</th>
+        <th>COSTO</th>
+        <th>CANTIDAD</th>
+        <th>TOTAL</th>   
+    </tr>
+    </thead>
+    <tbody id="traerArticulos">
+    </tbody>
+    <tr>
+        <th id="nameArticulo1"></th>
+        <th id="precioArticulo1"></th>
+        <th id="cantidadArticulo1"></th>
+        <th id="totalArticulos1"></th>
+    </tr>
+    <tr>
+        <th id="nameArticulo2"></th>
+        <th id="precioArticulo2"></th>
+        <th id="cantidadArticulo2"></th>
+        <th id="totalArticulos2"></th>
+    </tr>
+    <tr>
+        <th id="nameArticulo3"></th>
+        <th id="precioArticulo3"></th>
+        <th id="cantidadArticulo3"></th>
+        <th id="totalArticulos3"></th>
+    </tr>
+    <tr>
+        <th id="nameArticulo4"></th>
+        <th id="precioArticulo4"></th>
+        <th id="cantidadArticulo4"></th>
+        <th id="totalArticulos4"></th>
+    </tr>
+    <tr>
+        <th id="nameArticulo5"></th>
+        <th id="precioArticulo5"></th>
+        <th id="cantidadArticulo5"></th>
+        <th id="totalArticulos5"></th>
+    </tr>
+    <tr>
+        <th id="nameArticulo6"></th>
+        <th id="precioArticulo6"></th>
+        <th id="cantidadArticulo6"></th>
+        <th id="totalArticulos6"></th>
+    </tr>
+    <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th id="Total"></th>
+    </tr>
+    <br>
+</table>
+<br>
+<button class="tabla3" onclick="calcularTotales()"><b>-----Calcular-----</b></button>
+<br><br>
+<canvas id="myChart" width="400" height="400"></canvas>
+</body>
+<script>
+var count1 =0,count2 =0,count3 =0,count4 =0,count5 =0,count6 =0;
+var infoArticulos1 = [],infoArticulos2 = [],infoArticulos3 = [],infoArticulos4 = [],infoArticulos5 = [],infoArticulos6 = [];
+function añadirArticulo1(articulo) {
+    count1++;
+    var nombre = articulo.getAttribute('nombre');
+    var precio = articulo.getAttribute('precio');
+
+    infoArticulos1.push(count1);
+    if(infoArticulos1.length > 0)
+    {
+        document.getElementById('nameArticulo1').innerHTML = nombre;
+        document.getElementById('precioArticulo1').innerHTML = precio;
+        document.getElementById('cantidadArticulo1').innerHTML = infoArticulos1.length;
+    }
+    else
+    {
+        document.getElementById('traerArticulos').innerHTML = "";
+    }
+}
+function añadirArticulo2(articulo) {
+    count2++;
+    var nombre = articulo.getAttribute('nombre');
+    var precio = articulo.getAttribute('precio');
+
+    infoArticulos2.push(count2);
+    if(infoArticulos2.length > 0)
+    {
+        document.getElementById('nameArticulo2').innerHTML = nombre;
+        document.getElementById('precioArticulo2').innerHTML = precio;
+        document.getElementById('cantidadArticulo2').innerHTML = infoArticulos2.length;
+    }
+    else
+    {
+        document.getElementById('traerArticulos').innerHTML = "";
+    }
+}
+function añadirArticulo3(articulo) {
+    count3++;
+    var nombre = articulo.getAttribute('nombre');
+    var precio = articulo.getAttribute('precio');
+
+    infoArticulos3.push(count3);
+    if(infoArticulos3.length > 0)
+    {
+        document.getElementById('nameArticulo3').innerHTML = nombre;
+        document.getElementById('precioArticulo3').innerHTML = precio;
+        document.getElementById('cantidadArticulo3').innerHTML = infoArticulos3.length;
+    }
+    else
+    {
+        document.getElementById('traerArticulos').innerHTML = "";
+    }
+}
+function añadirArticulo4(articulo) {
+    count4++;
+    var nombre = articulo.getAttribute('nombre');
+    var precio = articulo.getAttribute('precio');
+
+    infoArticulos4.push(count4);
+    if(infoArticulos4.length > 0)
+    {
+        document.getElementById('nameArticulo4').innerHTML = nombre;
+        document.getElementById('precioArticulo4').innerHTML = precio;
+        document.getElementById('cantidadArticulo4').innerHTML = infoArticulos4.length;
+    }
+    else
+    {
+        document.getElementById('traerArticulos').innerHTML = "";
+    }
+}
+function añadirArticulo5(articulo) {
+    count5++;
+    var nombre = articulo.getAttribute('nombre');
+    var precio = articulo.getAttribute('precio');
+
+    infoArticulos5.push(count5);
+    if(infoArticulos5.length > 0)
+    {
+        document.getElementById('nameArticulo5').innerHTML = nombre;
+        document.getElementById('precioArticulo5').innerHTML = precio;
+        document.getElementById('cantidadArticulo5').innerHTML = infoArticulos5.length;
+
+    }
+    else
+    {
+        document.getElementById('traerArticulos').innerHTML = "";
+    }
+}
+function añadirArticulo6(articulo) {
+    count6++;
+    var nombre = articulo.getAttribute('nombre');
+    var precio = articulo.getAttribute('precio');
+
+    infoArticulos6.push(count6);
+    if(infoArticulos6.length > 0)
+    {
+        document.getElementById('nameArticulo6').innerHTML = nombre;
+        document.getElementById('precioArticulo6').innerHTML = precio;
+        document.getElementById('cantidadArticulo6').innerHTML = infoArticulos6.length;
+
+    }
+    else
+    {
+        document.getElementById('traerArticulos').innerHTML = "";
+    }
+}
+function calcularTotales(){
+    totalArticulo1= count1 * 13999;
+    totalArticulo2= count2 * 7714;
+    totalArticulo3= count3 * 7106;
+    totalArticulo4= count4 * 17749;
+    totalArticulo5= count5 * 299;
+    totalArticulo6= count6 * 2811;
+    totalFinalArticulos = totalArticulo1 + totalArticulo2 + totalArticulo3 + totalArticulo4 +totalArticulo5;
+    if (totalArticulo1>0)
+    {
+        document.getElementById('totalArticulos1').innerHTML =  '$' +totalArticulo1;
+    }else
+    {
+        document.getElementById('totalArticulos1').innerHTML = "";
+    }
+
+    if (totalArticulo2>0)
+    {
+        document.getElementById('totalArticulos2').innerHTML =  '$' +totalArticulo2;
+    }else
+    {
+        document.getElementById('totalArticulos2').innerHTML = "";
+    }
+
+    if (totalArticulo3>0)
+    {
+        document.getElementById('totalArticulos3').innerHTML =  '$' +totalArticulo3;
+    }else
+    {
+        document.getElementById('totalArticulos3').innerHTML = "";
+    }
+
+    if (totalArticulo4>0)
+    {
+        document.getElementById('totalArticulos4').innerHTML =  '$' +totalArticulo4;
+    }else
+    {
+        document.getElementById('totalArticulos4').innerHTML = "";
+    }
+
+    if (totalArticulo5>0)
+    {
+        document.getElementById('totalArticulos5').innerHTML =  '$' +totalArticulo5;
+    }else
+    {
+        document.getElementById('totalArticulos5').innerHTML = "";
+    }
+    if (totalArticulo6>0)
+    {
+        document.getElementById('totalArticulos6').innerHTML =  '$' +totalArticulo6;
+    }else
+    {
+        document.getElementById('totalArticulos6').innerHTML = "";
+    }
+    document.getElementById('Total').innerHTML =  'TOTAL DE ARTICULOS A PAGAR: '+'$' + totalFinalArticulos;
+
+    //Grafica -->
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['PlayStation 5 =' + count1, 'Xbox Series S =' + count2, 'Nintendo switch =' + count3, 'Xbox Series X =' + count4, 'Audífonos Gamer =' + count5, 'Silla de escritorio Tedge =' + count6],
+        datasets: [{
+            label: '# of Votes',
+            data: [count1, count2, count3, count4, count5, count6],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+}
+</script>
+</html>
